@@ -55,7 +55,9 @@ func index(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Подключение к базе данных mysql
-	db, err := sql.Open("mysql", "root:root@tcp(127.0.0.1:8889)/golang")
+	// db, err := sql.Open("mysql", "root:root@tcp(127.0.0.1:8889)/golang")
+	db, err := sql.Open("mysql", "ezyro_32990016:chvz7tmk@tcp(sql302.ezyro.com)/ezyro_32990016_golang")
+
 	if err != nil {
 		panic(err)
 	}
@@ -190,7 +192,7 @@ func HandleFunc() {
 	// <body class="d-flex h-100 text-center text-bg-dark"> в header.html нужно убрать класс text-bg-dark тогда фон будет переопределен
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 
-	// // Запускаем локальный сервер
+	// Запускаем локальный сервер
 	http.ListenAndServe(":8080", nil)
 }
 
